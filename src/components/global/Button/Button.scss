@@ -1,0 +1,22 @@
+.nasa-button {
+  height: 32px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba($color: #fff, $alpha: 0.1);
+  padding: 0px 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 70ms linear;
+  &:hover {
+    background-color: #fff;
+    color: black;
+  }
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  &:hover {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    color: white;
+  }
+}

@@ -1,0 +1,14 @@
+.search-tools {
+  width: 100%;
+  gap: 8px;
+  display: flex;
+  .input-wrapper {
+    width: 22.5%;
+    &:first-of-type {
+      width: 40%;
+    }
+  }
+  button {
+    width: 15%;
+  }
+}
