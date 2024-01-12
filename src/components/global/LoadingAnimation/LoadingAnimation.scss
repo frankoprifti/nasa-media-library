@@ -1,0 +1,13 @@
+.loading-animation-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  color: white;
+  z-index: -1;
+}

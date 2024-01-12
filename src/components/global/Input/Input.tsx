@@ -1,4 +1,3 @@
-import React from "react";
 import "./Input.scss";
 
 interface InputProps {
@@ -21,8 +20,8 @@ export default function Input({
       <input
         placeholder={placeholder}
         value={value || ""}
-        type={type}
         onChange={(e) => onChange(e.target.value)}
+        type={type}
         max={maxNumber}
       />
     </div>

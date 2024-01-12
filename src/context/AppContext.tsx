@@ -1,10 +1,16 @@
 import { Moment } from "moment";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
+import { search } from "../api";
 
 interface IAppContext {
   data: any[];
-  updateData: (searchTerm: string, startDate: Moment, endDate: Moment) => void;
-  isLoading: boolean;
+  updateData: (
+    searchTerm: string,
+    startDate?: Number,
+    endDate?: Number
+  ) => void;
+  loading: boolean;
+  error: string | null;
 }
 interface Props {
   children: React.ReactNode;
@@ -14,18 +20,31 @@ export const AppContext = React.createContext<IAppContext | null>(null);
 
 const AppProvider: React.FC<Props> = ({ children }) => {
   const [data, setData] = useState<any[]>([]);
-  const [isLoading, setLoading] = useState<boolean>(false);
-  const updateData = (
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const updateData = async (
     searchTerm: string,
-    startDate: Moment,
-    endDate: Moment
+    startDate?: Number,
+    endDate?: Number
   ) => {
-    console.log(searchTerm, startDate, endDate);
-    setData([]);
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await search(searchTerm, startDate, endDate);
+
+      if (data.length === 0) {
+        setError(`No data for ${searchTerm}`);
+      } else {
+        setData(data);
+      }
+    } catch (error) {
+      setError("Error getting data");
+    }
+    setLoading(false);
   };
 
   return (
-    <AppContext.Provider value={{ data, updateData, isLoading }}>
+    <AppContext.Provider value={{ data, updateData, loading, error }}>
       {children}
     </AppContext.Provider>
   );

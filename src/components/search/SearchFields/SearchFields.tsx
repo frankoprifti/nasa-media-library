@@ -1,24 +1,52 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./SearchFields.scss";
 import Input from "../../global/Input/Input";
 import Button from "../../global/Button/Button";
 import moment from "moment";
+import { notification } from "antd";
+import { validateSearch } from "../../../utils/validations";
+import { AppContext } from "../../../context/AppContext";
 
 export default function SearchFields() {
   const [searchVal, setSearchVal] = useState<string>("");
-  const [startYear, setStartYear] = useState<number>();
-  const [endYear, setEndYear] = useState<number>();
+  const [startYear, setStartYear] = useState<string>();
+  const [endYear, setEndYear] = useState<string>();
 
   const updateSearchValue = (val: string) => {
     setSearchVal(val);
   };
   const updateStartYear = (val: string) => {
-    setStartYear(Number(val));
+    setStartYear(val);
   };
   const updateEndYear = (val: string) => {
-    setEndYear(Number(val));
+    setEndYear(val);
   };
-  const search = () => {};
+  const showAlert = (message: string, type: "info" | "error") => {
+    if (type === "info") {
+      notification.info({ message });
+    } else {
+      notification.error({ message });
+    }
+  };
+
+  const context = useContext(AppContext);
+
+  const search = () => {
+    console.log(startYear);
+    const validator = validateSearch(
+      searchVal,
+      Number(startYear),
+      Number(endYear)
+    );
+    if (validator) {
+      return showAlert(validator, "error");
+    }
+    context?.updateData(
+      searchVal,
+      startYear ? Number(startYear) : undefined,
+      endYear ? Number(endYear) : undefined
+    );
+  };
   return (
     <div className={"search-tools"}>
       <Input
