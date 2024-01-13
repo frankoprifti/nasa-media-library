@@ -1,5 +1,6 @@
 import axios from "axios";
-import { BASE_URL } from ".";
+import { BASE_URL, getMetadata } from ".";
+import { NasaImageCollection } from "../entities";
 
 export const search = async (searchTerm: string, startDate?: Number, endDate?: Number) => {
     let url = `${BASE_URL}/search?q=${searchTerm}&media_type=image&page_size=12`;
@@ -12,7 +13,7 @@ export const search = async (searchTerm: string, startDate?: Number, endDate?: N
     const response = await axios.get(url)
     if (response.data) {
         const data = response.data.collection?.items;
-        const formatted: any[] = [];
+        const formatted: NasaImageCollection[] = [];
         for (let i = 0; i < data.length; i++) {
             const item = data[i];
             const metadata = await getMetadata(item.data?.[0]?.nasa_id);
@@ -21,11 +22,5 @@ export const search = async (searchTerm: string, startDate?: Number, endDate?: N
         return formatted;
     } else {
         throw new Error("No data found");
-    };
-
-
-}
-const getMetadata = async (asset_id: string) => {
-    const response = await axios.get(`http://images-assets.nasa.gov/image/${asset_id}/metadata.json`);
-    return response.data
+    }
 }

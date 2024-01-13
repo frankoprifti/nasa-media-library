@@ -5,9 +5,11 @@ import { AppContext } from "../../../context/AppContext";
 
 export default function RenderCards() {
   const context = useContext(AppContext);
-  console.log(context?.data, "DATA");
   return (
-    <div className={"render-cards-wrapper"}>
+    <div
+      className={"render-cards-wrapper"}
+      data-testid={"render-cards-wrapper"}
+    >
       {context?.data?.map((card) => (
         <Card
           key={card.data[0].nasa_id}

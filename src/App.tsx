@@ -1,14 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Search from "./screens/Search/Search";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AppProvider from "./context/AppContext";
+import Collection from "./screens/Collection/Collection";
+import Search from "./screens/Search/Search";
+import ScrollToTop from "./ScrollToTop";
 
 export default function App() {
   return (
     <AppProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
-          <Route path="/" Component={Search} />
+          <Route path="/:id" element={<Collection />} />
+          <Route path="/" element={<Search />} />
         </Routes>
       </Router>
     </AppProvider>

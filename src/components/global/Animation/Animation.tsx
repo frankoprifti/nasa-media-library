@@ -14,7 +14,12 @@ export default function Animation({ size }: { size: number }) {
 
   return (
     <div>
-      <Lottie options={defaultOptions} width={size} height={size} />
+      <Lottie
+        options={defaultOptions}
+        width={size}
+        height={size}
+        data-testid={"animation-mock"}
+      />
     </div>
   );
 }

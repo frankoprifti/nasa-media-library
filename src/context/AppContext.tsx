@@ -1,9 +1,9 @@
-import { Moment } from "moment";
 import React, { useState } from "react";
 import { search } from "../api";
+import { NasaImageCollection } from "../entities";
 
 interface IAppContext {
-  data: any[];
+  data: NasaImageCollection[];
   updateData: (
     searchTerm: string,
     startDate?: Number,
@@ -19,7 +19,7 @@ interface Props {
 export const AppContext = React.createContext<IAppContext | null>(null);
 
 const AppProvider: React.FC<Props> = ({ children }) => {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<NasaImageCollection[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const updateData = async (

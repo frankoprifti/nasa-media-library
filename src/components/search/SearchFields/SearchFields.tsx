@@ -21,25 +21,20 @@ export default function SearchFields() {
   const updateEndYear = (val: string) => {
     setEndYear(val);
   };
-  const showAlert = (message: string, type: "info" | "error") => {
-    if (type === "info") {
-      notification.info({ message });
-    } else {
-      notification.error({ message });
-    }
+  const showAlert = (message: string) => {
+    notification.error({ message });
   };
 
   const context = useContext(AppContext);
 
   const search = () => {
-    console.log(startYear);
     const validator = validateSearch(
       searchVal,
       Number(startYear),
       Number(endYear)
     );
     if (validator) {
-      return showAlert(validator, "error");
+      return showAlert(validator);
     }
     context?.updateData(
       searchVal,

@@ -14,7 +14,10 @@ export default function LoadingAnimation({ size }: { size: number }) {
   };
 
   return (
-    <div className={"loading-animation-wrapper"}>
+    <div
+      className={"loading-animation-wrapper"}
+      data-testid={"loading-animation-wrapper"}
+    >
       <Lottie options={defaultOptions} width={size} height={size} />
       <b>Searching through universe</b>
     </div>

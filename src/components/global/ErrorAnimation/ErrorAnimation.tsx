@@ -20,7 +20,10 @@ export default function ErrorAnimation({
   };
 
   return (
-    <div className={"error-animation-wrapper"}>
+    <div
+      className={"error-animation-wrapper"}
+      data-testid={"error-animation-wrapper"}
+    >
       <Lottie options={defaultOptions} width={size} height={size} />
       {error}
     </div>

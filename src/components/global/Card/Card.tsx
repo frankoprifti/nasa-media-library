@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Card.scss";
 
 interface CardProps {
@@ -32,6 +33,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, author, location }) => {
       document.removeEventListener("mousemove", () => {});
     };
   }, [activeId, id]);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -40,10 +42,16 @@ const Card: React.FC<CardProps> = ({ id, title, image, author, location }) => {
       className={"card"}
       onMouseEnter={() => setActiveId(id)}
       onMouseLeave={() => setActiveId(null)}
-      onClick={(e) => {}}
+      onClick={() => {
+        navigate(`/${id}`);
+      }}
     >
       <div className={"background-color"} />
-      <div id={`hover-effect-${id}`} className={"hover-effect"} />
+      <div
+        id={`hover-effect-${id}`}
+        data-testid={`hover-effect-${id}`}
+        className={"hover-effect"}
+      />
       <img alt={`nasa-img-${id}`} className={"card-img"} src={image} />
       <h1>{title}</h1>
       <b>
