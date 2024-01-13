@@ -15,25 +15,25 @@ import { asset } from "../../api";
 const mockCollectionData: ImageData = {
   collection: {
     version: "1.0",
-    href: "http://images-api.nasa.gov/asset/KSC_20221115_Artemis%20I%20Launch-1",
+    href: "https://images-api.nasa.gov/asset/KSC_20221115_Artemis%20I%20Launch-1",
     items: [
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~orig.jpg",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~orig.jpg",
       },
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~large.jpg",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~large.jpg",
       },
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~medium.jpg",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~medium.jpg",
       },
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~small.jpg",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~small.jpg",
       },
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~thumb.jpg",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/KSC_20221115_Artemis I Launch-1~thumb.jpg",
       },
       {
-        href: "http://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/metadata.json",
+        href: "https://images-assets.nasa.gov/image/KSC_20221115_Artemis I Launch-1/metadata.json",
       },
     ],
   },
