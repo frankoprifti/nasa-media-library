@@ -14,6 +14,7 @@ export const search = async (searchTerm: string, startDate?: Number, endDate?: N
     if (response.data) {
         const data = response.data.collection?.items;
         const formatted: NasaImageCollection[] = [];
+        // I didn't like to do this but I didn't find any other solution on how to get more metadata like photographer and location from NASA Image API.
         for (let i = 0; i < data.length; i++) {
             const item = data[i];
             const metadata = await getMetadata(item.data?.[0]?.nasa_id);
